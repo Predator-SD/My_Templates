@@ -5,3 +5,4 @@
 2.union_find.cpp     |并查集</br>
 3.BIT.cpp            |树状数组</br>
 4.backpack.cpp       |背包</br>
+5.kruskal.cpp        |最小生成树</br>
