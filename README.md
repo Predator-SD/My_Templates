@@ -6,3 +6,4 @@
 3.BIT.cpp            |树状数组</br>
 4.backpack.cpp       |背包</br>
 5.kruskal.cpp        |最小生成树</br>
+6.floyd.cpp          |floyd最短路和连通判断</br>
