@@ -1,5 +1,5 @@
 # My_Templates
-竞赛用的一些templates（都是我手写的喔），学（zhao）习（chao）用~</br>
+竞赛用的一些templates（都是我手写的喔，咳，现在有抄的了），学（zhao）习（chao）用~</br>
 目前的可用板:</br>
 1.qpow.cpp   快速幂</br>
 2.union_find.cpp   并查集</br>
@@ -11,4 +11,5 @@
 8.euler.cpp   欧拉回路</br>
 9.topo.cpp   拓扑排序</br>
 10.qread.cpp   快速读入</br>
+10.LCA.cpp   倍增求最近公共祖先</br>
 ## 最后奶自己一口：NOIP2018，400+！！！
