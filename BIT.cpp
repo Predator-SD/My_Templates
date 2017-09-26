@@ -1,15 +1,15 @@
 #include<cstdio>
 int n,m,c[500070],a[500070];
-int lowbit(int i){
+inline int lowbit(int i){
     return i&-i;
 }
-void add(int x,int d){
+inline void add(int x,int d){
     while(x<=n){
         c[x]+=d;
         x+=lowbit(x);
     }
 }
-int sum(int x){
+inline int sum(int x){
     int s=0;
     while(x){
         s+=c[x];
