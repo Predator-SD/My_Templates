@@ -13,5 +13,6 @@
 10.qread.cpp   快速读入</br>
 10.LCA.cpp   倍增求最近公共祖先</br>
 11.forstar.cpp   链式前向星</br>
-明天一定会把tarjan更出来。。。。。。
+12.RMQ.cpp   区间最小值查询(O(logn))
+tarjan没出来。。。RMQ出来了。。。不乱奶了
 ## 最后奶自己一口：NOIP2018，400+！！！
