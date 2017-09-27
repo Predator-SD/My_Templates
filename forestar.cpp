@@ -2,7 +2,7 @@
 #include<cstring>
 #include<vector>
 using namespace std;
-int head[1008611],k=1,dco=0;
+int head[1008611],k=1,dco=-1;
 int a=0,b=0,c=0;
 int s[10086];
 vector<int> D,E,B;
@@ -22,16 +22,13 @@ void DEB(int p){
     s[p]=1;
     D.push_back(p);
     E.push_back(p);
-    B.push_back(dco);
+    B.push_back(++dco);
     for(int i=head[p];i!=-1;i=e[i].next){
         int v=e[i].to;
         if(s[v]==1) continue;
-        else{
-		    dco++; DEB(v);
-	    }
-	    dco--;
+        else DEB(v);
         E.push_back(p);
-        B.push_back(dco);
+        B.push_back(--dco);
     }
 }
 int main(){
