@@ -4,7 +4,7 @@
 using namespace std;
 int head[1008611],k=1,dco=-1;
 int a=0,b=0,c=0;
-int s[10086];
+bool s[10086];
 vector<int> D,E,B;
 struct edge{
 	int to,next,w;
@@ -12,20 +12,20 @@ struct edge{
 edge e[1008611];
 inline init(){
 	memset(head,-1,sizeof(head));
-	memset(s,0,sizeof(s));
+	memset(s,false,sizeof(s));
 }
 inline void addedge(int u,int v,int w){
 	e[k]=(edge){v,head[u],w};
 	head[u]=k++;
 }
 void DEB(int p){
-    s[p]=1;
+    s[p]=true;
     D.push_back(p);
     E.push_back(p);
     B.push_back(++dco);
     for(int i=head[p];i!=-1;i=e[i].next){
         int v=e[i].to;
-        if(s[v]==1) continue;
+        if(s[v]==true) continue;
         else DEB(v);
         E.push_back(p);
         B.push_back(--dco);
