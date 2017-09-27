@@ -1,6 +1,5 @@
 #include<cstdio>
 #include<cstring>
-#include<iostream>
 #include<vector>
 using namespace std;
 int head[1008611],k=1,dco=0;
