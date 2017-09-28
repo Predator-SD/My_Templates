@@ -36,7 +36,7 @@ void DEB(int p){
         B.push_back(--dco);
     }
 }
-void BFS(){
+inline void BFS(){
 	while(t.size()){
 		int p=t.front();
 		t.pop();
