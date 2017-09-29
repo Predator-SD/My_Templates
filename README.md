@@ -22,6 +22,6 @@
 蛤蛤蛤蛤，树剖都出来了，然而还是没有tarjan(托腮)。</br>
 如果翻一下这markdown的记录，你会发现这是个悲伤的故事</br>
 ### flaj区
-写完线段树，tarjan强连通，优先队列和hash散列我就发布0.0.1a</br>
-哦对了，还有Dijkstra，差点忘了
+准备填坑：Segment Tree(传标记)，(BIT维护最值)，(树链剖分)，树上差分，Huffman Tree，(Tarjan强连通)，Dijkstra</br>
+带括号意思是看心情（托腮）
 ## 最后奶自己一口：NOIP2018，400+！！！
