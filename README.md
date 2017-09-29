@@ -17,6 +17,7 @@
 12.forstar.cpp   链式前向星+DFS序&&欧拉序&&深度序&&BFS</br>
 13.RMQ.cpp   区间最小值查询(没有笛卡尔树，不用看了)</br>
 14.HLD.cpp   树链剖分求LCA</br>
+15.SCompress.cpp   状态压缩</br>
 ### 吐槽区
 蛤蛤蛤蛤，树剖都出来了，然而还是没有tarjan(托腮)。</br>
 如果翻一下这markdown的记录，你会发现这是个悲伤的故事</br>
