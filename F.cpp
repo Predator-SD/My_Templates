@@ -9,6 +9,8 @@ public:
                 for(int j = 0; j < d; j++){
                     int x = a[i+j], y = a[i+j+d];
                     a[i+j] = x+y; a[i+j+d] = x-y;
+		    //and a[i+j] = x+y;
+                    //or a[i+j+d] = x+y;
                 }
             }
         }
@@ -19,6 +21,8 @@ public:
                 for(int j = 0; j < d; j++){
                     int x = a[i+j], y = a[i+j+d];
                     a[i+j] = (x+y)/2; a[i+j+d] = (x-y)/2;
+		    //and a[i+j] = x-y
+                    //or a[i+j] = y-x
                 }
             }
         }
