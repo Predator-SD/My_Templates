@@ -20,6 +20,9 @@ public:
         }
         return ans;
     }
+    inline int query(int x){
+    	return d[bit+x];
+    }
 }seg;
 inline int Segment_Tree::opt(int a,int b){return std::max(a,b);}
 
@@ -28,5 +31,5 @@ int main(){
 	seg.update(1,5);
 	seg.update(2,9);
 	seg.update(3,2);
-	printf("%d",seg.qquery(1,3));
+	printf("%d",seg.query(2));
 }
