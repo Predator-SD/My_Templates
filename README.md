@@ -22,9 +22,10 @@
 17.LE.cpp   线性素数筛(欧拉筛)</br>
 18.SegT.cpp   zkw线段树(不支持区间修改）</br>
 19.Segment_Tree.cpp   线段树（Complete)</br>
+20.hot_meat.cpp   泼辣的肉(Pollard Rho)</br>
 ### 吐槽区
 蛤蛤蛤蛤，树剖都出来了，然而还是没有tarjan(托腮)。</br>
 如果翻一下这markdown的记录，你会发现这是个悲伤的故事</br>
 ### flaj区
-改了一下计划，觉得联赛前还是踏实一点，填完欧拉筛和Dijkstra的坑，就一直刷题到联赛结束吧</br>
+改了一下计划，觉得联赛前还是踏实一点，填完Dijkstra的坑，就一直刷题到联赛结束吧</br>
 ## 最后奶自己一口：NOIP2018，400+！！！
