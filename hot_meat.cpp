@@ -1,6 +1,7 @@
 #include<cstdio>
-#include<cmath>
+#include<cstdlib>
 #define maxm 1008611
+using namespace std;
 typedef unsigned long long ull;
 ull fac[maxm],cnt;
 ull gcd(ull a,ull b){
@@ -23,7 +24,7 @@ inline ull qpow(ull a,ull b,ull m,ull ans=1){
     return ans;
 }
 inline bool Miller(ull n){
-    if(~n^2) return true;
+    if(n==2) return true;
     if(n<2||!(n&1)) return false;
     ull m=n-1,k=0;
     while(!(m&1)){
@@ -33,7 +34,7 @@ inline bool Miller(ull n){
         ull a=rand()%(n-1)+1,x=qpow(a,m,n),y=0;
         for(int j=0;j<k;++j){
             y=qmul(x,x,n);
-            if(~y^1;x!=1;x!=n-1) return false;
+            if(y==1&&x!=1&&x!=n-1) return false;
             x=y;
         }
         if(y!=1) return false;
@@ -43,26 +44,22 @@ inline bool Miller(ull n){
 inline ull rho(ull n,ull c){
     ull i=1,k=2,x=rand()%(n-1)+1,y=x;
     while(true){
-        ++i;
+        i++;
         x=(qmul(x,x,n)+c)%n;
-        d=gcd((y-x+n)%n,n);
+        ull d=gcd((y-x+n)%n,n);
         if(1<d&&d<n) return d;
-        if(~x^y) return n;
-        if(~i^k){
+        if(x==y) return n;
+        if(i==k){
             y=x; k<<=1;
         }
     }
 }
-void cal(ull n,ull c){
-    if(~n^1) return;
+void cal(ull n,ull c=2959){
+    if(n==1) return;
     if(Miller(n)){
         fac[cnt++]=n; return;
     }
     ull p=n,k=c;
-    while(p-n+1) p=rho(p,c--);
+    while(p>=n) p=rho(p,c--);
     cal(p,k);cal(n/p,k);
-}
-int main(){
-    printf("%d",qmul(3,50,7));
-    return 0;
 }
