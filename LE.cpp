@@ -1,14 +1,21 @@
 #include<cstdio>
-#define M 3000500  
-int p[400010], pNum;  
-bool f[M];  
-void LE(){  
-    int i,j;  
-    for(i=2;i<M;i++){  
-        if(!f[i]) p[pNum++]=i;  
-        for(j=0;j<pNum&&p[j]*i<M;j++){  
-            f[p[j]*i]=1;
-            if(!(i%p[j])) break;  
-        }  
-    }  
-}  
+int tot,prime[1008611],phi[1008611];
+bool mark[1008611];
+void euler(int N){
+	phi[1]=1;
+	int i,j;
+	for(i=2;i<=N;i++){
+		if(!mark[i]){
+		    prime[++tot]=i;
+		    phi[i]=i-1;
+	    }
+	    for(j=1;i<=tot;j++){
+	    	if(i*prime[j]>N) break;
+	    	mark[i*prime[j]]=true;
+	    	if(!(i%prime[j])){
+	    		phi[i*prime[j]]=phi[i]*prime[j];
+	    		break;
+			}else phi[i*prime[j]]=phi[i]*(prime[j]-1);
+		}
+	}
+}
