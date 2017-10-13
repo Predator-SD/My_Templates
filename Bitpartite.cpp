@@ -2,7 +2,7 @@
 struct edge{
 	int to,next;
 }e[1008611];
-int fa[1008611],k=1,color[1008611],head[1008611];
+int fa[1008611],k=1,color[1008611],head[1008611],bw[3];
 inline void addedge(int u,int v){
 	e[k]=(edge){v,head[u]};
 	head[u]=k++;
@@ -16,6 +16,7 @@ bool tu(int p){
         if(color[v]==color[p]) return false;
         if(color[v]==0){
         	color[v]=3-color[p];
+		bw[color[v]]++;
         	if(!tu(v)) return false;
 		}
     }
@@ -31,6 +32,7 @@ int main(){
 		add(a,b);
 	}
 	color[1]=1;
+	bw[1]++;
 	printf("%d",tu(1));
 	fclose(stdin);
 }
