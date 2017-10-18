@@ -25,7 +25,8 @@
 20.hot_meat.cpp   泼辣的肉(Pollard Rho)</br>
 21.Lucas.cpp   Lucas定理</br>
 22.Bitpartite.cpp   二分图判断</br>
-23.trie.cpp   无旋平衡trie</br>
+23.trie.cpp   无旋平衡trie(by imone + Predator_SD)</br>
+24.discrete.cpp   高速离散化（by __stdcall)</br>
 ### 吐槽区
 蛤蛤蛤蛤，树剖都出来了，然而还是没有tarjan(托腮)。</br>
 如果翻一下这markdown的记录，你会发现这是个悲伤的故事</br>
