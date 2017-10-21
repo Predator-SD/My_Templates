@@ -1,31 +1,44 @@
-#include<iostream>
-using namespace std;
-
-int n,m,p,r1,r2,r[5000];
-
-//以下为压缩(误)路径并查集
-struct node{
-    int parent;
-};
-node t[5000];
-int find(int x){
-    return x==t[x].parent?t[x].parent:find(t[x].parent);
+#include<cstdio>
+#define ll long long
+#define mod 998244353
+#define maxn 4000003
+template<typename T>
+inline void read(T &x){
+  char ch;while((ch=getchar()),(ch>'9'||ch<'0'));
+  x=ch-'0';while((ch=getchar()),(ch>='0'&&ch<='9')) x=x*10+ch-'0';
 }
-//以下为主函数
+inline int qadd(int x,int y){
+  int re=x+y;
+  if(re>=mod) re-=mod;
+  return re;
+}
+inline int qmul(ll x,ll y){return x*(y%mod)%mod;}
+struct node{
+  int parent;
+}t[maxn];
+int p[maxn],op[maxn],ans;
+ll sum[maxn];
+bool flag[maxn];
+ll maxx;
+inline int find(int x){
+  return t[x].parent==x?x:find(t[x].parent);
+}
+inline void unio(int x,int y){
+  sum[find(x)]+=sum[find(y)];
+  t[find(y)].parent=find(x);
+  maxx=sum[find(x)]>maxx?sum[find(x)]:maxx;
+}
 int main(){
-    ios::sync_with_stdio(false);
-    cin>>n>>m>>p;
-    for(int i=0;i<n;i++){
-        t[i].parent=i;
-    }
-    for(int i=0;i<m;i++){
-        cin>>r1>>r2;
-        t[find(r1)].parent=find(r2);
-    }
-    for(int i=0;i<p;i++){
-        cin>>r1>>r2;
-        if(t[find(r1)].parent==t[find(r2)].parent) cout<<"Yes\n";
-        else cout<<"No\n";
-    }
-    return 0;
+  register int n,i;
+  read(n);
+  for(i=1;i<=n;++i) read(p[i]),t[i].parent=i,sum[i]=p[i];
+  for(i=n;i>=1;--i) read(op[i]);
+  for(i=1;i<n;++i){
+    flag[op[i]]=true,maxx=sum[op[i]]>maxx?sum[op[i]]:maxx;
+    if(flag[op[i]-1]) unio(op[i]-1,op[i]);
+    if(flag[op[i]+1]) unio(op[i]+1,op[i]);
+    ans=qadd(ans,qmul(qmul(n-i,n-i),maxx));
+  }
+  printf("%d\n",ans);
+  return 0;
 }
