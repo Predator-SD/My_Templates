@@ -28,9 +28,10 @@
 23.trie.cpp   无旋平衡trie(by imone + Predator_SD)</br>
 24.discrete.cpp   高速离散化（by stdcall)</br>
 25.mat_pow.cpp   矩阵快速幂加速递推</br>
+26.Prim.cpp   Prim生成树</br>
 ### 吐槽区
-蛤蛤蛤蛤，树剖都出来了，然而还是没有tarjan(托腮)。</br>
-如果翻一下这markdown的记录，你会发现这是个悲伤的故事</br>
+最近切题天天翻车，取模翻车，精度翻车。。。。。。</br>
+感觉吃枣药丸
 ### flaj区
-改了一下计划，觉得联赛前还是踏实一点，填完Dijkstra的坑，就一直刷题到联赛结束吧</br>
+DIJ?不存在的。
 ## 最后奶自己一口：NOIP2017，400+！！！
