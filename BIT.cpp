@@ -7,7 +7,7 @@ struct BIT{
     struct SEMI{  
         T arr[N];  
         void add(int x,T n){while(x<=N)arr[x]+=n,x+=lowbit(x);}  
-        T sum(int x){int sum=0;while(x)sum+=arr[x],x-=lowbit(x);return sum;}  
+        T sum(int x){T sum=0;while(x)sum+=arr[x],x-=lowbit(x);return sum;}  
     }T1,T2;
     void add(int x,T n){T1.add(x,n);T2.add(x,x*n);}  
     void update(int L,int R,T n){add(L,n);add(R+1,-n);}  
