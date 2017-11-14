@@ -29,9 +29,6 @@
 24.discrete.cpp   高速离散化（by stdcall)</br>
 25.mat_pow.cpp   矩阵快速幂加速递推</br>
 26.Prim.cpp   Prim生成树</br>
-### 吐槽区
-最近切题天天翻车，取模翻车，精度翻车。。。。。。</br>
-感觉吃枣药丸
-### flaj区
-DIJ?不存在的。
-## 最后奶自己一口：NOIP2017，400+！！！
+27.KMP.cpp   KMP单模板匹配</br>
+28.Dinic.cpp   最小割最大流的Dinic算法</br>
+29.Dijkstra.cpp   天国的DIJ
