@@ -13,7 +13,7 @@ namespace KMP{
 		}
 	}
 
-	inline void KMP(char* T,char* P,int* f){
+	inline void solve(char* T,char* P,int* f){
 		int n=strlen(T),m=strlen(P),j=0;
 		getfail(P,f);
 		for(int i=0;i<n;++i){
