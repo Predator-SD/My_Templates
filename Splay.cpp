@@ -1,57 +1,59 @@
 #include<bits/stdc++.h>
-#define MIN 0x80000000
-#define MAX 0x7fffffff
 #define uint unsigned int
+#define maxn 1008611
+#define MAX 0x7fffffff
+#define MIN 0x80000000
 using namespace std;
 
 template<typename T>
 struct Splay{
-	struct node_t{
+	struct node{
 		T val;
-		node_t *lc,*rc,*pa,**root;
+		node *lc,*rc,*pa,**root;
 		uint size;
 		
-		node_t(const T &val,node_t *pa,node_t **root):val(val),pa(pa),lc(NULL),rc(NULL),size(1),root(root){}
-		~node_t(){if(lc) delete lc; if(rc) delete rc;}
+		node(const T &val,node *pa,node **root):val(val),pa(pa),lc(NULL),rc(NULL),size(1),root(root){}
+		~node(){if(lc) delete lc; if(rc) delete rc;}
 		
-		inline node_t *grandparent(){return !pa?NULL:pa->pa;}
-		inline node_t *&child(uint x){return !x?lc:rc;}
-		inline uint relation(){return this==pa->lc?0:1;}
+		inline node *grandpa(){return !pa?NULL:pa->pa;}
+		inline node *&child(bool r){return r==0?lc:rc;}
+		inline bool relation(){return this==pa->lc?0:1;}
 		inline void maintain(){size=lsize()+rsize()+1;}
-		inline uint lsize(){return lc?lc->size:0;}
-		inline uint rsize(){return rc?rc->size:0;}
+		inline uint rsize(){return rc->size;}
+		inline uint lsize(){return lc->size;}
 		
-		inline void rotate(){
-    		node_t *old=pa;
-    		uint x=relation();
-    		if(grandparent())
-        		grandparent()->child(old->relation())=this;
-    		pa=grandparent();
-    		old->child(x)=child(x^1);
-    		if (child(x^1))
-        		child(x^1)->pa=old;
-    		child(x^1)=old;
-    		old->pa=this;
-    		old->maintain();
-    		maintain();
-    		if(!pa)
-        		*root=this;
+		inline void rot(){
+			bool r=relation();
+			node *opa=pa;
+			
+			if(grandpa())
+			    grandpa()->child(opa->relation())=this;
+			pa=grandpa();
+			
+			opa->child(r)=child(r^1);
+			if(child(r^1)) child(r^1)->pa=opa;
+			
+			child(r^1)=opa;
+			opa->pa=this;
+			
+			opa->maintain();
+			maintain();
+			if(!pa) *root=this;
 		}
 		
-		inline node_t *splay(node_t **target=NULL){
-    		if(!target) target=root;
-    		while(this!=*target){
-        		if (pa==*target) rotate();
-        		else if(relation()==pa->relation())
-            		pa->rotate(), rotate();
-        		else rotate(),rotate();
-    		}
-    		return *target;    
+		inline node *splay(node **target){
+			if(!target) target=root;
+			while(this!=*root){
+				if(pa==*target) rot();
+				else if(relation()==pa->relation()) pa->rot(),rot();
+				else rot(),rot();
+			}
+			return *target;
 		}
 		
-		inline node_t *pred(){
-			node_t *pred=this;
-			while(pred->val==this.val){
+		inline node *pred(){
+			node *pred=this;
+			while(pred->val==this->val){
 				pred->splay();
 				pred=pred->lc;
 				while(pred->rc) pred=pred->rc;
@@ -59,8 +61,8 @@ struct Splay{
 			return pred->splay();
 		}
 		
-		inline node_t *succ(){
-			node_t *succ=this;
+		inline node *succ(){
+			node *succ=this;
 			while(succ->val==this->val){
 				succ->splay();
 				succ=succ->rc;
@@ -71,73 +73,61 @@ struct Splay{
 	}*root;
 	
 	Splay():root(NULL){
-    	insert(MIN);
-    	insert(MAX);
-	}
-	
-	inline node_t *insert(const T &value){
-    	node_t **target=&root,*parent=NULL;
-    	while(*target){
-        	parent=*target;
-        	parent->size++;
-        	if(value<(*target)->value) target=&(*target)->lchild;
-        	else target=&(*target)->rchild;
-    	}
-    	*target=new node_t(value,parent,&root);
-    	return (*target)->splay();
-	}
-	
-	inline node_t *find(const T &value){
-    	node_t *node=root;
-    	while(node&&value!=node->val)
-        	if(value<node->val) node=node->lc;
-        	else node=node->rc;
-    	if(node) return node->pred()->succ()->splay();
-    	else return NULL;
+		insert(MIN);
+		insert(MAX);
 	}
 	
 	inline uint rank(const T &value){return find(value)->lsize();}
 	
-	inline const T &pred(const T &value){
-    	node_t *node=find(value);
-    	if(node) return node->pred()->value;
-    	else{
-        	node=insert(value);
-        	const T &result=node->pred()->value;
-        	erase(node);
-        	return result;
-    	}
-	}
-
-	inline const T &succ(const T &value) {
-    	node_t *node=find(value);
-    	if(node) return node->succ()->value;
-    	else{
-        	node=insert(value);
-        	const T &result=node->succ()->value;
-        	erase(node);
-        	return result;
-    	}
+	inline node *insert(const T &value){
+		node **target=&root,*parent=NULL;
+		while(*target){
+			parent=*target;
+			++parent->size();
+			if(value<(*target)->val) target=&(*target)->lc;
+			else target=&(*target)->rc;
+		}
+		*target=new node(value,parent,&root);
+		return *target->splay();
 	}
 	
-	inline void erase(const T &value){
-    	node_t *node=find(value);
-    	erase(node);
+	inline node *find(uint value){
+		node *node=root;
+		while(node&&value!=node->val)
+		    if(value<node->val) node=node->lc;
+		    else node=node->rc;
+		if(node) return node->splay();
+		else return NULL;
 	}
-
+	
+	inline const T &pred(const T &value){
+		node *node=find(value);
+		if(node) return node->pred()->val;
+		else{
+			node=insert(value);
+			const T &result=node->pred()->val;
+			erase(node);
+			return result;
+		}
+	}
+	
+	inline void erase(node *l,node *r=NULL){
+		if(!r) r=l;
+		node *pred=l->pred();
+		node *succ=r->succ();
+		pred->splay();
+		succ->splay(&pred->rc);
+		delete succ->lc;
+		succ->lc=NULL;
+		succ->maintain();
+		pred->maintain();
+	}
+	
 	inline void erase(const T &l,const T &r){
-    	erase(find(l),find(r));
+		erase(find(l),find(r));
 	}
-
-	inline void erase(node_t *l,node_t *r=NULL){
-    	if(!r) r=l;
-    	node_t *pred=l->pred();
-    	node_t *succ=r->succ();
-    	pred->splay();
-    	succ->splay(&pred->rc);
-    	delete succ->lc;
-    	succ->lchild = NULL;
-    	succ->maintain();
-    	pred->maintain();
+	
+	inline void erase(const T &k){
+		erase(find(k));
 	}
 };
