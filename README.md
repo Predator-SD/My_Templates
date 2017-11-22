@@ -33,4 +33,5 @@
 28.Dinic.cpp   最小割最大流的Dinic算法</br>
 29.Dijkstra.cpp   天国的DIJ</br>
 30.Real-Trie.cpp   真-字典树</br>
-31.Splay.cpp   可以为所欲为的神器伸展树
+31.Splay.cpp   可以为所欲为的神器伸展树</br>
+32.Suffix_Array.cpp   后缀数组
