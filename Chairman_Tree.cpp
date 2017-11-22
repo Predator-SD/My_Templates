@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#include<new>
 #define maxn 1008611
 #define maxm 10086
 using namespace std;
