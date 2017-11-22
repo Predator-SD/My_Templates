@@ -34,4 +34,5 @@
 29.Dijkstra.cpp   天国的DIJ</br>
 30.Real-Trie.cpp   真-字典树</br>
 31.Splay.cpp   可以为所欲为的神器伸展树</br>
-32.Suffix_Array.cpp   后缀数组
+32.Suffix_Array.cpp   后缀数组</br>
+33.Chairman_Tree.cpp   主席树
