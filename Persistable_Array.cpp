@@ -1,6 +1,5 @@
-#include<bits/stdc++.h>
+#include<cstdio>
 #define MAXN 1000005
-using namespace std;
 
 int base[MAXN];
 
