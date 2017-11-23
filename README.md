@@ -36,4 +36,5 @@
 31.Splay.cpp   可以为所欲为的神器伸展树</br>
 32.Suffix_Array.cpp   后缀数组</br>
 33.Chairman_Tree.cpp   主席树</br>
-34.Persistable_Array.cpp   可持久化数组(主席树实现)
+34.Persistable_Array.cpp   可持久化数组(主席树实现)</br>
+35.LF.cpp   左偏树(可合并堆)
