@@ -1,7 +1,8 @@
-#include<bits/stdc++.h>
+#include<cstdio>
+#include<algorithm>
+
 #define lowbit(x) (x&-x)
 #define N 10005
-using namespace std;
 
 int n,m;
 int a[N],b[N<<1|1];
@@ -30,7 +31,7 @@ struct Modifiable_CT{
 	}
 	
 	void modify(const int &x,const int &v){
-		int k=lower_bound(b+1,b+totn+1,a[x])-b;
+		int k=std::lower_bound(b+1,b+totn+1,a[x])-b;
 		for(int i=x;i<=n;i+=lowbit(i)) ins(root[i],1,totn,root[i],k,v);
 	}
 	
@@ -68,21 +69,21 @@ inline int read(){
 }
 
 int main(){
-    char s[20];
+    register char s[20];
     n=read();m=read();
-    for(int i=1;i<=n;i++)a[i]=read(),b[++MCT.totn]=a[i];
-    for(int i=1;i<=m;i++){
+    for(register int i=1;i<=n;i++)a[i]=read(),b[++MCT.totn]=a[i];
+    for(register int i=1;i<=m;i++){
         scanf("%s",s);ca[i]=read();cb[i]=read();
         if(s[0]=='Q')cc[i]=read();else b[++MCT.totn]=cb[i];
     }
-    sort(b+1,b+MCT.totn+1);
-    MCT.totn=unique(b+1,b+MCT.totn+1)-b-1;
-    for(int i=1;i<=n;i++) MCT.modify(i,1);
-    for(int i=1;i<=m;i++){
+    std::sort(b+1,b+MCT.totn+1);
+    MCT.totn=std::unique(b+1,b+MCT.totn+1)-b-1;
+    for(register int i=1;i<=n;i++) MCT.modify(i,1);
+    for(register int i=1;i<=m;i++){
         if(cc[i]){
             MCT.totx=MCT.toty=0;
-            for(int j=ca[i]-1;j;j-=lowbit(j))MCT.xx[++MCT.totx]=MCT.root[j];
-            for(int j=cb[i];j;j-=lowbit(j))MCT.yy[++MCT.toty]=MCT.root[j];
+            for(register int j=ca[i]-1;j;j-=lowbit(j))MCT.xx[++MCT.totx]=MCT.root[j];
+            for(register int j=cb[i];j;j-=lowbit(j))MCT.yy[++MCT.toty]=MCT.root[j];
             printf("%d\n",b[MCT.query(1,MCT.totn,cc[i])]);
         }
         else{MCT.modify(ca[i],-1);a[ca[i]]=cb[i];MCT.modify(ca[i],1);}
