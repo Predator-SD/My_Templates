@@ -1,18 +1,21 @@
 #include<bits/stdc++.h>
-#define maxn 1000005
+#define MAXN 1000005
 using namespace std;
 
-int a[maxn];
-int root[maxn*20];
+int base[MAXN];
 
+template<typename T,size_t maxn>
 struct Chairman_Tree{
 	enum Relation{
 		L=0,R=1
 	};
 	
-	int ch[maxn*20][2],val[maxn*20],index=0;
+	int root[maxn];
+	int ch[maxn][2];
+	T val[maxn];
+	int index=0;
 	
-	inline void build(int &o,const int &l,const int &r){
+	inline void build(int &o,const T a[],const int &l,const int &r){
 		o=++index;
 		
 		if(l==r){
@@ -21,11 +24,11 @@ struct Chairman_Tree{
 		}
 		
 		const int mid=(l+r)>>1;
-		build(ch[o][L],l,mid);
-		build(ch[o][R],mid+1,r);
+		build(ch[o][L],a,l,mid);
+		build(ch[o][R],a,mid+1,r);
 	}
 	
-	inline void modify(int &o,const int &pre,const int &l,const int &r,const int &k,const int &v){
+	inline void modify(int &o,const int &pre,const int &l,const int &r,const int &k,const T &v){
 		o=++index;
 		
 		ch[o][L]=ch[pre][L],ch[o][R]=ch[pre][R],val[o]=val[pre];
@@ -45,24 +48,26 @@ struct Chairman_Tree{
 		if(k<=mid) return query(ch[o][L],l,mid,k);
 		else return query(ch[o][R],mid+1,r,k);
 	}
-}CT;
+};
+
+Chairman_Tree<int,MAXN*20> CT;
 
 int main(){
 	register int n,m;
 	scanf("%d%d",&n,&m);
 	
-	for(register int i=1;i<=n;++i) scanf("%d",&a[i]);
-	CT.build(root[0],1,n);
+	for(register int i=1;i<=n;++i) scanf("%d",&base[i]);
+	CT.build(CT.root[0],base,1,n);
 	
 	register int pre,opt,x,y;
 	for(register int i=1;i<=m;++i){
 		scanf("%d%d%d",&pre,&opt,&x);
 		if(opt==1){
 			scanf("%d",&y);
-			CT.modify(root[i],root[pre],1,n,x,y);
+			CT.modify(CT.root[i],CT.root[pre],1,n,x,y);
 		}else{
-			printf("%d\n",CT.query(root[pre],1,n,x));
-			root[i]=root[pre];
+			printf("%d\n",CT.query(CT.root[pre],1,n,x));
+			CT.root[i]=CT.root[pre];
 		}
 	}
 	return 0;
