@@ -37,4 +37,5 @@
 32.Suffix_Array.cpp   后缀数组</br>
 33.Chairman_Tree.cpp   主席树</br>
 34.Persistable_Array.cpp   可持久化数组(主席树实现)</br>
-35.LF.cpp   左偏树(可合并堆)
+35.LF.cpp   左偏树(可合并堆)</br>
+36.Modifiable_CT.cpp   可修改主席树(动态区间kth)</br>
