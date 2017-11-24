@@ -39,3 +39,4 @@
 34.Persistable_Array.cpp   可持久化数组(主席树实现)</br>
 35.LF.cpp   左偏树(可合并堆)</br>
 36.Modifiable_CT.cpp   可修改主席树(动态区间kth)</br>
+37.Color_Count.cpp   数区间颜色数(主席树)</br>
