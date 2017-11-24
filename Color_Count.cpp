@@ -27,38 +27,35 @@ struct Chairman_Tree{
 		val[o]=val[ch[o][L]]+val[ch[o][R]];
 	}
 	
-	int build(const int &l,const int &r){
-		int o=index++;
+	void build(int &o,const int &l,const int &r){
+		o=index++;
 		
 		if(l==r){
 			val[o]=0;
-			return o;
+			return ;
 		}
 		
 		const int mid=(l+r)>>1;
-		ch[o][L]=build(l,mid);
-		ch[o][R]=build(mid+1,r);
-		
-		return o;
+		build(ch[o][L],l,mid);
+		build(ch[o][L],mid+1,r);
 	}
 	
-	int update(const int pre,const int &l,const int &r,const int &pos,const int &v){
-		int o=index++;
+	void update(int &o,const int pre,const int &l,const int &r,const int &pos,const int &v){
+		o=index++;
 		
 		ch[o][L]=ch[pre][L],ch[o][R]=ch[pre][R];
 		val[o]=val[pre];
 		
 		if(l==pos&&r==pos){
 			val[o]+=v;
-			return o;
+			return ;
 		}
 		
 		const int mid=(l+r)>>1;
-		if(pos<=mid) ch[o][L]=update(ch[pre][L],l,mid,pos,v);
-		else ch[o][R]=update(ch[pre][R],mid+1,r,pos,v);
+		if(pos<=mid) update(ch[o][L],ch[pre][L],l,mid,pos,v);
+		else update(ch[o][R],ch[pre][R],mid+1,r,pos,v);
 		
 		pushup(o);
-		return o;
 	}
 	
 	int query(const int &o,const int &l,const int &r,const int &pos){
@@ -77,16 +74,21 @@ int b[N];
 int main(){
 	register int n,m,x,y;
 	read(n);
+	
 	for(register int i=1;i<=n;++i) read(b[i]);
-	CT.root[0]=CT.build(1,n);
+	CT.build(CT.root[0],1,n);
+	
 	for(register int i=1;i<=n;++i){
-		if(mp.find(b[i])==mp.end()) CT.root[i]=CT.update(CT.root[i-1],1,n,i,1);
+		if(mp.find(b[i])==mp.end())
+			CT.update(CT.root[i],CT.root[i-1],1,n,i,1);
 		else{
-			int tmp=CT.update(CT.root[i-1],1,n,mp[b[i]],-1);
-			CT.root[i]=CT.update(tmp,1,n,i,1);
+			int tmp;
+			CT.update(tmp,CT.root[i-1],1,n,mp[b[i]],-1);
+			CT.update(CT.root[i],tmp,1,n,i,1);
 		}
 		mp[b[i]]=i;
 	}
+	
 	read(m);
 	for(register int i=0;i<m;++i){
 		read(x),read(y);
