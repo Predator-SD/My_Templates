@@ -41,3 +41,4 @@
 36.Modifiable_CT.cpp   可修改主席树(动态区间kth)</br>
 37.Color_Count.cpp   数区间颜色数(主席树)</br>
 38.FFT.cpp   快速傅里叶变换(快速数列卷积)</br>
+39.Linear_Basis.cpp   构造线性基</br>
