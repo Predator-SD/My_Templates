@@ -1,10 +1,10 @@
-#include<bits/stdc++.h>
+#include<cstdio>
+#include<algorithm>
 #define ull unsigned long long
 using namespace std;
 
-const int l=100;
+const int MAXL=100;
 
-template<int MAXL>
 struct Linear_Basis{
 	ull a[MAXL+3];
 	
@@ -29,4 +29,15 @@ struct Linear_Basis{
 			}
 		}
 	}
+	
+	inline void mergefrom(const Linear_Basis &rhs){
+		for(int i=0;i<MAXL;++i) ins(rhs.a[i]);
+	}
 };
+
+inline Linear_Basis merge(const Linear_Basis &a,const Linear_Basis &b){
+	Linear_Basis c=a;
+	for(int i=0;i<MAXL;++i) c.ins(b.a[i]);
+	
+	return c;
+}
