@@ -1,19 +1,14 @@
 #include<cstdio>
-
-#include <algorithm>
-#include <complex>
-#include <vector>
-#include <cmath>
+#include<complex>
 
 #define PI 3.141592653589793
-#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)
 
 using namespace std;
 
 typedef complex<double> Comp;
 
 const Comp I(0,1);
-const int MAX_N = 1 << 20;
+const int MAX_N = 1 << 10;
 
 Comp tmp[MAX_N];
 
@@ -45,9 +40,16 @@ void DFT(Comp *a,const int &n,const short &rev){
 	for(int i=0;i<n;++i) a[i]=tmp[i];
 }
 
+template<typename T>
+inline T poww(const T &a,const int &n){
+	T ans=1;
+	for(int i=0;i<n;++i) ans*=a;
+	return ans;
+}
+
 int main() {
-	static Comp a[1 << 20] = { }, b[1 << 20] = { };
-	int n = 1 << 20;
+	static Comp a[1 << 10] = {1,2,3}, b[1 << 10] = {1,2,3};
+	int n = 1 << 10;
 	DFT(a, n, 1);
 	DFT(b, n, 1);
 	for (int i = 0; i < n; ++i) {
@@ -57,4 +59,8 @@ int main() {
 	for (int i = 0; i < n; ++i) {
 		a[i] /= n;
 	}
+	
+	double ans=0; 
+	for(int i=0;i<10;++i) ans+=a[i].real()*poww(10,i);
+	printf("%lf",ans);
 }
