@@ -23,8 +23,8 @@ void FFT(Comp *a,const int &n,const short &rev){
 	
 	Comp *a0=a;
 	Comp *a1=a+(n>>1);
-	DFT(a0,n>>1,rev);
-	DFT(a1,n>>1,rev);
+	FFT(a0,n>>1,rev);
+	FFT(a1,n>>1,rev);
 	
 	Comp cur(1,0);
 	const double alpha=PI*2/n*rev;
@@ -50,12 +50,12 @@ inline T poww(const T &a,const int &n){
 int main() {
 	static Comp a[1 << 10] = {1,2,3}, b[1 << 10] = {1,2,3};
 	int n = 1 << 10;
-	DFT(a, n, 1);
-	DFT(b, n, 1);
+	FFT(a, n, 1);
+	FFT(b, n, 1);
 	for (int i = 0; i < n; ++i) {
 		a[i] *= b[i];
 	}
-	DFT(a, n, -1);
+	FFT(a, n, -1);
 	for (int i = 0; i < n; ++i) {
 		a[i] /= n;
 	}
