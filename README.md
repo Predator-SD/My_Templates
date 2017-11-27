@@ -42,3 +42,4 @@
 37.Color_Count.cpp   数区间颜色数(主席树)</br>
 38.FFT.cpp   快速傅里叶变换(快速数列卷积)</br>
 39.Linear_Basis.cpp   构造线性基</br>
+40.NTT.cpp   快速数论变换</br>
