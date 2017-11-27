@@ -12,7 +12,7 @@ const int MAX_N = 1 << 10;
 
 Comp tmp[MAX_N];
 
-void DFT(Comp *a,const int &n,const short &rev){
+void FFT(Comp *a,const int &n,const short &rev){
 	if(n==1) return ;
 	
 	for(int i=0;i<n;++i) tmp[i]=a[i];
