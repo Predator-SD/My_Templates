@@ -43,3 +43,8 @@
 38.FFT.cpp   快速傅里叶变换(快速数列卷积)</br>
 39.Linear_Basis.cpp   构造线性基</br>
 40.NTT.cpp   快速数论变换</br>
+41.MCMF_SPFA.cpp   最小费用流的SPFA算法</br>
+</br>
+# Flaj区</br>
+## 1.二分图匹配是不可能的，这辈子是不会学二分图匹配的</br>
+## 2.强连通是不可能的，这辈子是不会学Tarjan的</br>
