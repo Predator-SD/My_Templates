@@ -44,6 +44,7 @@
 39.Linear_Basis.cpp   构造线性基</br>
 40.NTT.cpp   快速数论变换</br>
 41.MCMF_SPFA.cpp   最小费用流的SPFA算法</br>
+42.Cut-Bridge.cpp   割顶和桥</br>
 </br>
 # Flaj区</br>
 ## 1.二分图匹配是不可能的，这辈子是不会学二分图匹配的</br>
