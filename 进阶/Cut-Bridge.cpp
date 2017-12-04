@@ -3,7 +3,7 @@
 using namespace std;
 
 int low[1008611],pre[1008611],dclock;
-bool iscut[1008611];
+bool iscut[1008611],isbridge[1008611];
 
 int dfs(int u,int fa){
 	int lowu=pre[u]=++dclock;
@@ -19,6 +19,9 @@ int dfs(int u,int fa){
 			
 			if(lowv>=pre[u])
 				iscut[u]=true;
+			
+			if(lowv>pre[u])
+				isbridge[x]=true;
 		}
 		else if(pre[v]<pre[u]&&v!=fa)
 			lowu=minn(lowu,pre[v]);
