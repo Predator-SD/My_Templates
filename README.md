@@ -45,7 +45,8 @@
 40.NTT.cpp   快速数论变换</br>
 41.MCMF_SPFA.cpp   最小费用流的SPFA算法</br>
 42.Cut-Bridge.cpp   割顶和桥</br>
+43.Kosaraju.cpp   Kosaraju算法求强连通分量</br>
+44.Tarjan.cpp   Tarjan法求强连通分量</br>
 </br>
 # Flaj区</br>
-## 1.二分图匹配是不可能的，这辈子是不会学二分图匹配的</br>
-## 2.强连通是不可能的，这辈子是不会学Tarjan的</br>
+## 然后我都学了
