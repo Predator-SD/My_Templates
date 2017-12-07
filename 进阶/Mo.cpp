@@ -1,5 +1,6 @@
 #include<cstdio>
 #include<algorithm>
+#include<cmath>
 
 #define ll long long
 
@@ -39,7 +40,10 @@ inline void prelude(){
 	for(int i=1;i<=n;++i)
 		scanf("%d",&color[i]);
 	
-	pos[0]=sqrt(n);
+	pos[0]=std::sqrt(n);
+	for(int i=1;i<=n;++i)
+		pos[i]=(i-1)/pos[0]+1;
+	
 	for(int i=1;i<=m;++i){
 		Q[i].id=i;
 		scanf("%d%d",&Q[i].l,&Q[i].r);
