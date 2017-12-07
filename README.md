@@ -48,6 +48,7 @@
 43.Kosaraju.cpp   Kosaraju算法求强连通分量</br>
 44.Tarjan.cpp   Tarjan法求强连通分量</br>
 45.Mo.cpp   莫队算法（无修改）</br>
+46.Modifiable_Mo.cpp   带修莫队</br>
 </br>
 # Flaj区</br>
 ## 然后我都学了
