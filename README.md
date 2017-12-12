@@ -49,6 +49,8 @@
 44.Tarjan.cpp   Tarjan法求强连通分量</br>
 45.Mo.cpp   莫队算法（无修改）</br>
 46.Modifiable_Mo.cpp   带修莫队</br>
+47.Manacher.cpp   Manacher(马拉车)回文串算法</br>
+48.EDP1.cpp   期望DP1</br>
 </br>
 # Flaj区</br>
 ## 然后我都学了
