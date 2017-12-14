@@ -52,6 +52,7 @@
 47.Manacher.cpp   Manacher(马拉车)回文串算法</br>
 48.EDP1.cpp   期望DP1</br>
 49.Chtholly_Tree.cpp   珂朵莉树</br>
+50.Quadrangle.cpp   四边形不等式优化DP</br>
 </br>
 # Flaj区</br>
 ## 然后我都学了
