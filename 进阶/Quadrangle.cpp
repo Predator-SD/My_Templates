@@ -38,10 +38,7 @@ inline void cal(){
 }
 
 inline void solve(){
-	int ans=INF;
-	for(int i(1);i<=n;++i)
-		ans=minn(ans,f[i][i+n-1]);
-	printf("%d",ans);
+	printf("%d",f[1][n]);
 }
 
 int main(){
