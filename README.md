@@ -53,6 +53,8 @@
 48.EDP1.cpp   期望DP1</br>
 49.Chtholly_Tree.cpp   珂朵莉树</br>
 50.Quadrangle.cpp   四边形不等式优化DP</br>
+51.LCT.cpp   Link-Cut Tree动态树</br>
+52.2-SAT   dfs版的垃圾2-SAT</br>
 </br>
 # Flaj区</br>
 ## 然后我都学了
