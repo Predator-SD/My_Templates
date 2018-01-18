@@ -5,9 +5,8 @@ template<size_t N>
 class Suffix_Array{
 public:
 	int n;
-	int sa[N+5],s[N+5];
-	int ju[N+5];
-	const int Sigma=63;
+	int sa[N+3],s[N+3];
+	int rank[N+3],height[N+3];
 	
 	struct bunch{
 		int id,alpha,beta;
@@ -34,7 +33,7 @@ public:
 	}
 	
 	void getSA(){
-		bool flag=true;
+		bool ju[N+3],flag=true;
 		for(int k=1;k<=n;k<<=1){
 			memset(buc,0,sizeof buc);
 			memset(ju,0,sizeof ju);
@@ -56,7 +55,27 @@ public:
 			else flag=true;
 		}
 		
-		for(int i=0;i<n;++i) sa[s[i]]=i+1;
+		for(int i=0;i<n;++i) sa[s[i]]=i;
+	}
+	
+	void getHeight(){
+		for(int i=0;i<n;++i) rank[sa[i]]=i;
+		
+		for(int i=0,k=0;i<n;++i){
+			k-=k?1:0;
+			int j=sa[rank[i]-1];
+			while(s[i+k]==s[j+k]) ++k;
+			height[rank[i]]=k;
+		}
+		
+		height[0]=-1;
+	}
+	
+	void solve(char a[]){
+		read(a),
+		getSA(),
+		read(a),
+		getHeight();
 	}
 };
 
@@ -66,8 +85,7 @@ char a[1000005];
 
 int main(){
 	scanf("%s",a);
-	sss.read(a);
-	sss.getSA();
-	for(register int i=1;i<=sss.n;++i) printf("%d ",sss.sa[i]);
+	sss.solve(a);
+	for(register int i=1;i<=sss.n;++i) printf("%d ",sss.sa[i]+1);
 	return 0;
 }
