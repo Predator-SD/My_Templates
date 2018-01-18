@@ -56,6 +56,7 @@
 51.LCT.cpp   Link-Cut Tree动态树</br>
 52.2-SAT.cpp   dfs版的垃圾2-SAT</br>
 53.Irrotatable_Treap.cpp   无旋Treap</br>
+54.CD.cpp   点分治</br>
 </br>
 # Flaj区</br>
-## 然后我都学了
+## 这辈子是不可能学可持久化平衡树的
