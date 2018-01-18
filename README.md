@@ -57,6 +57,7 @@
 52.2-SAT.cpp   dfs版的垃圾2-SAT</br>
 53.Irrotatable_Treap.cpp   无旋Treap</br>
 54.CD.cpp   点分治</br>
+55.SAM.cpp   后缀自动机</br>
 </br>
 # Flaj区</br>
 ## 这辈子是不可能学可持久化平衡树的
