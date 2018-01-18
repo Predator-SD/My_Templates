@@ -7,6 +7,7 @@ public:
 	int n;
 	int sa[N+5],s[N+5];
 	int ju[N+5];
+	const int Sigma=63;
 	
 	struct bunch{
 		int id,alpha,beta;
@@ -28,6 +29,10 @@ public:
 		for(int i=0;i<n;++i) s[i]=idx(in[i]);
 	}
 	
+	void radix_sort(){
+		sort(buc,buc+n,cmp);
+	}
+	
 	void getSA(){
 		bool flag=true;
 		for(int k=1;k<=n;k<<=1){
@@ -38,7 +43,7 @@ public:
 				buc[cur1].id=cur1,
 				buc[cur1].alpha=s[cur1],
 				buc[cur1].beta=(cur2>=n?0:s[cur2]);
-			sort(buc,buc+n,cmp);
+			radix_sort();
 			
 			for(int i=0,cnt=1;i<n;++i)
 				cnt+=((i!=0)&&(buc[i].alpha!=buc[i-1].alpha||buc[i].beta!=buc[i-1].beta)),
