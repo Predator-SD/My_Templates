@@ -1,19 +1,14 @@
 #include<bits/stdc++.h>
-#define uint unsigned int
+#define MAXN 10000005
 using namespace std;
 
 template<size_t Sigma>
-class SAM{
-public:
+struct SAM{
 	struct Node{
 		Node *next,*ch[Sigma];
-		uint max;
+		int max;
 		
-		Node(const int maxx):ch(),next(NULL),max(maxx){}
-		
-		inline uint getMin(){
-			return next->max+1;
-		}
+		Node(int max=0):max(max),next(NULL),ch(){}
 	}*root,*last;
 	
 	inline void prelude(){
@@ -32,7 +27,7 @@ public:
 			Node *n=new Node(v->max+1),*o=v->ch[c];
 			copy(o->ch,o->ch+Sigma,n->ch);
 			n->next=o->next;
-			o->next=u->next=n;
+			u->next=o->next=n;
 			for(;v&&v->ch[c]==o;v=v->next) v->ch[c]=n;
 		}
 		
@@ -40,3 +35,43 @@ public:
 		return u;
 	}
 };
+
+SAM<4> sss;
+
+inline int idx(char ch){
+    switch(ch){
+        case 'N': return 0;
+        case 'S': return 1;
+        case 'W': return 2;
+        case 'E': return 3;
+        default: return -1;
+    }
+}
+
+inline int solve(char *s){
+    int len=strlen(s);
+    SAM<4>::Node *v=sss.root;
+    for (int i=0;i<len;++i){
+        int c=idx(s[i]);
+        if(v->ch[c]) v=v->ch[c];
+        else return i;
+    }
+    return len;
+}
+
+int main(){
+    int n,m;
+    static char s[MAXN+1];
+    scanf("%d %d\n%s",&n,&m,s);
+    sss.prelude();
+    for(register int i=0;i<n;++i)
+        sss.extend(idx(s[i]));
+
+    while(m--){
+        static char s[MAXN+1];
+        scanf("%s",s);
+        printf("%d\n",solve(s));
+    }
+    
+    return 0;
+}
