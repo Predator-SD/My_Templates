@@ -7,10 +7,11 @@ public:
 	int n;
 	int sa[N+3],s[N+3];
 	int rank[N+3],height[N+3];
+	int cnt[N+3];
 	
 	struct bunch{
 		int id,alpha,beta;
-	}buc[N+5];
+	}buc[N+3];
 	
 	inline static bool cmp(const bunch &lhs,const bunch &rhs){
 		return (lhs.alpha<rhs.alpha)||(lhs.alpha==rhs.alpha&&lhs.beta<rhs.beta);
@@ -29,7 +30,21 @@ public:
 	}
 	
 	void radix_sort(){
-		sort(buc,buc+n,cmp);
+		//sort(buc,buc+n,cmp);
+		
+		static bunch tmp[N+3];
+		for(int i=0;i<N;++i) cnt[i]=0;
+		for(int i=0;i<n;++i) ++cnt[buc[i].beta];
+		for(int i=1;i<N;++i) cnt[i]+=cnt[i-1];
+		for(int i=n-1;i>=0;--i) tmp[--cnt[buc[i].beta]]=buc[i];
+		for(int i=0;i<n;++i) buc[i]=tmp[i];
+		
+		for(int i=0;i<N;++i) cnt[i]=0;
+		for(int i=0;i<n;++i) ++cnt[buc[i].alpha];
+		for(int i=1;i<N;++i) cnt[i]+=cnt[i-1];
+		for(int i=n-1;i>=0;--i) tmp[--cnt[buc[i].alpha]]=buc[i];
+		for(int i=0;i<n;++i) buc[i]=tmp[i];
+		
 	}
 	
 	void getSA(){
@@ -55,25 +70,24 @@ public:
 			else flag=true;
 		}
 		
-		for(int i=0;i<n;++i) sa[s[i]]=i;
+		for(int i=0;i<n;++i)
+			sa[s[i]]=i;
 	}
 	
 	void getHeight(){
-		for(int i=0;i<n;++i) rank[sa[i]]=i;
+		for(int i=0;i<=n;++i) rank[sa[i]]=i;
 		
 		for(int i=0,k=0;i<n;++i){
-			k-=k?1:0;
+			if(k) --k;
 			int j=sa[rank[i]-1];
 			while(s[i+k]==s[j+k]) ++k;
 			height[rank[i]]=k;
 		}
-		
-		height[0]=-1;
 	}
 	
 	void solve(char a[]){
 		read(a),
-		getSA(),
+		getSA();
 		read(a),
 		getHeight();
 	}
@@ -85,7 +99,11 @@ char a[1000005];
 
 int main(){
 	scanf("%s",a);
+	
+	a[strlen(a)]='0';
 	sss.solve(a);
-	for(register int i=1;i<=sss.n;++i) printf("%d ",sss.sa[i]+1);
+	for(register int i=2;i<=sss.n;++i) printf("%d ",sss.sa[i]+1);
+	puts("");
+	for(register int i=3;i<=sss.n;++i) printf("%d ",sss.height[i]);
 	return 0;
 }
