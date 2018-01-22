@@ -59,6 +59,7 @@
 54.CD.cpp   点分治</br>
 55.SAM.cpp   后缀自动机的构建和简单应用</br>
 56.SAMtoSA.cpp   后缀自动机构建后缀数组</br>
+57.Mobius.cpp   莫比乌斯反演</br>
 </br>
 # Flaj区</br>
 ## 这辈子是不可能学可持久化平衡树的
