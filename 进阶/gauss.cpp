@@ -33,7 +33,7 @@ inline void gauss(){
                 swap(A[to][j],A[i][j]);
         
         t=A[i][i];
-        for(int j=1;j<=n+1;++j) A[i][j]/=t;
+        for(int j=i;j<=n+1;++j) A[i][j]/=t;
         for(int j=1;j<=n;++j)
             if(j!=i){
                 t=A[j][i];
