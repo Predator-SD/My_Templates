@@ -63,6 +63,7 @@
 58.tree_block.cpp   树分块</br>
 59.Du.cpp    杜教筛</br>
 60.gauss.cpp   高斯消元</br>
+61.simplex.cpp   单纯形</br>
 </br>
 # Flaj区</br>
 ## 这辈子是不可能学可持久化平衡树的
