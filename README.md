@@ -65,6 +65,7 @@
 60.gauss.cpp   高斯消元</br>
 61.simplex.cpp   单纯形</br>
 62.BSGScpp   大步小步算法（北上广深，拔山盖世）</br>
+63.polyln.cpp   多项式求ln(逆元+求导+积分)</br>
 </br>
 # Flaj区</br>
 ## 这辈子是不可能学可持久化平衡树的
